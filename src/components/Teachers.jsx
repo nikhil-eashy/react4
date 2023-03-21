@@ -5,7 +5,7 @@ import { blue, blueGrey } from '@mui/material/colors';
 import axios from 'axios';
 
 
-const Read = () => {
+const Teachers = () => {
     const color = blue[400];
     const color2 = blueGrey[900];
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -19,7 +19,7 @@ const Read = () => {
     }));
     var [students, setstud] = useState([])
     useEffect(() => {
-        axios.get("http://localhost:3005/students")
+        axios.get("http://localhost:3005/teachers")
             .then(response => {
                 console.log(response.data)
                 setstud(students = response.data)
@@ -29,14 +29,14 @@ const Read = () => {
     return (
         <div>
             <br></br>
-            <Typography variant='h3'>Students</Typography>
+            <Typography variant='h3'>Teachers</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Name</StyledTableCell>
                             <StyledTableCell>Age</StyledTableCell>
-                            <StyledTableCell>Place</StyledTableCell>
+                            <StyledTableCell>Class</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -44,7 +44,7 @@ const Read = () => {
                             return <TableRow>
                                 <TableCell>{value.id}</TableCell>
                                 <TableCell>{value.name}</TableCell>
-                                <TableCell>{value.grade}</TableCell>
+                                <TableCell>{value.class}</TableCell>
                             </TableRow>
                         })}
                     </TableBody>
@@ -54,4 +54,4 @@ const Read = () => {
     )
 }
 
-export default Read
+export default Teachers
