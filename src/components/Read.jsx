@@ -1,4 +1,4 @@
-import { Typography, Paper, styled, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, } from '@mui/material'
+import { Typography, Paper, styled, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Button, createTheme, ThemeProvider, } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { tableCellClasses } from '@mui/material/TableCell';
 import { blue, blueGrey } from '@mui/material/colors';
@@ -6,7 +6,17 @@ import axios from 'axios';
 
 
 const Read = () => {
-    const color = blue[400];
+    const theme = createTheme({
+        palette: {
+        primary: {
+        main: '#b2102f',
+        },
+        secondary: {
+        main: '#11cb5f',
+        },
+        },
+        });
+    const color = "#b2102f";
     const color2 = blueGrey[900];
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -17,6 +27,14 @@ const Read = () => {
             fontSize: 14,
         },
     }));
+    const deletes =(id) =>{
+        console.log("Deleting "+id);
+        axios.delete("http://localhost:3005/students/"+id)
+        .then(response=>{
+            alert("Deleted")
+            window.location.reload(false)
+        })
+    }
     var [students, setstud] = useState([])
     useEffect(() => {
         axios.get("http://localhost:3005/students")
@@ -37,6 +55,7 @@ const Read = () => {
                             <StyledTableCell>Name</StyledTableCell>
                             <StyledTableCell>Age</StyledTableCell>
                             <StyledTableCell>Place</StyledTableCell>
+                            <StyledTableCell>Delete</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -45,6 +64,7 @@ const Read = () => {
                                 <TableCell>{value.id}</TableCell>
                                 <TableCell>{value.name}</TableCell>
                                 <TableCell>{value.grade}</TableCell>
+                                <TableCell><ThemeProvider theme={theme}><Button variant='contained' onClick={()=>deletes(value.id)}>Delete</Button></ThemeProvider></TableCell>
                             </TableRow>
                         })}
                     </TableBody>
