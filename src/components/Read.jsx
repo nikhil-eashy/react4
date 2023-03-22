@@ -56,6 +56,7 @@ const Read = () => {
                             <StyledTableCell>Age</StyledTableCell>
                             <StyledTableCell>Place</StyledTableCell>
                             <StyledTableCell>Delete</StyledTableCell>
+                            <StyledTableCell>Update</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

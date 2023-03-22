@@ -37,6 +37,7 @@ const Teachers = () => {
                             <StyledTableCell>Name</StyledTableCell>
                             <StyledTableCell>Age</StyledTableCell>
                             <StyledTableCell>Class</StyledTableCell>
+                            <StyledTableCell>Update</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
