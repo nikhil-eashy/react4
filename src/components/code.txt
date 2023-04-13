@@ -1,0 +1,21 @@
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({ latitude, longitude });
+
+        axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=4568b9fb658d4449a8fa0ef2fcd676c2`)
+          .then(response => {
+            const placeName = response.data.results[0].formatted;
+            
+            setPlaceName(placeName);
+          })
+          .catch(error => console.error("errror"+error));
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
+
+  <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',overflow: 'auto'}}   className="background-image" ></div>
