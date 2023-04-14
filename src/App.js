@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Addstudents from './components/Addstudents';
 import Startscreen from './components/Startscreen';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
  <BrowserRouter>
  <Navbar></Navbar>
       <Routes>
+      <Route path='/home' element={<Home></Home>}></Route>
       <Route path='/ss' element={<Startscreen></Startscreen>}></Route>
         <Route path='/' element={<Teachers></Teachers>}> </Route>
         <Route path='/students' element={<Read></Read>}></Route>

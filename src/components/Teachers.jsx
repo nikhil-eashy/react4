@@ -57,6 +57,7 @@ const Teachers = () => {
   
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',backgroundColor: 'rgba(255, 255, 255, 0)'}}>
+  
     {!loading && !isplaces &&(
       <div style={{
                 paddingTop: "50px"
@@ -196,4 +197,8 @@ const Teachers = () => {
   )
 }
 
+
 export default Teachers
+export function handleCardClick(id){
+  handleCardClick(id)
+}
